@@ -1,0 +1,11 @@
+# Dependency directories
+backend/node_modules/
+frontend/node_modules/
+
+# Environment variables
+.env
+backend/.env
+
+# IDE / System files
+.DS_Store
+.vscode/
