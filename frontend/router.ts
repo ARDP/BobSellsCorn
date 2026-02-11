@@ -13,8 +13,11 @@ export const AppRouter = Backbone.Router.extend({
     const model = new CornModel()
     const view = new CornView({ model: model })
     view.render()
-    document.querySelector("#app").innerHTML = "" // Clear existing content
-    document.querySelector("#app").appendChild(view.el)
+    const appElement = document.querySelector("#app")
+    if (appElement) {
+      appElement.innerHTML = "" // Clear existing content
+      appElement.appendChild(view.el)
+    }
   },
   // Additional route handlers can be added here
   // e.g., aboutPage: function () { ... }

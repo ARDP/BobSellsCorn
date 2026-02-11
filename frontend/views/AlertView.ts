@@ -8,13 +8,17 @@ const ALERT_TEMPLATE = `
   </div>
 `
 
-const renderMethod = function () {
+interface CustomAlertView extends Backbone.View {
+  message: string
+}
+
+const renderMethod = function (this: CustomAlertView) {
   const html = _.template(ALERT_TEMPLATE)({ message: this.message })
   this.$el.html(html)
   return this
 }
 
-const init = function (options) {
+const init = function (this: CustomAlertView, options: { message?: string }) {
   this.message = options.message || "Alert alert!"
   this.render()
 }

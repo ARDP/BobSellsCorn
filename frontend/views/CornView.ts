@@ -2,6 +2,10 @@ import Backbone from "backbone"
 import _ from "underscore"
 import { AlertView } from "./AlertView.js"
 
+interface CustomCornView extends Backbone.View {
+  handlePurchase: (e: JQuery.Event) => void
+}
+
 //Views logic if grows too much can be moved to the CornModel.js
 const CORN_TEMPLATE = `
     <div class="shop-container">
@@ -11,14 +15,14 @@ const CORN_TEMPLATE = `
     </div>
 `
 
-const renderMethod = function () {
+const renderMethod = function (this: CustomCornView) {
   const data = this.model.toJSON()
   const html = _.template(CORN_TEMPLATE)(data)
   this.$el.html(html)
   return this
 }
 
-const handlePurchaseMethod = function (e) {
+const handlePurchaseMethod = function (this: CustomCornView, e: JQuery.Event) {
   e.preventDefault()
   this.model.save(
     {},
@@ -37,7 +41,7 @@ const handlePurchaseMethod = function (e) {
   )
 }
 
-const init = function () {
+const init = function (this: CustomCornView) {
   this.listenTo(this.model, "change", this.render)
   // since i do it in router doing render here it will cause double render
   // this.render()
