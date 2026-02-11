@@ -7,9 +7,16 @@ export const checkRateLimitMiddleware = (
   // This inner function is the actual Express middleware
   return (req, res, next) => {
     try {
-      const ip = req.ip || "ip-not-found"
+      // added the req.headers["x-forwarded-for"] because
+      // the tests were failing
+      // Explicitly checking headers to identify client IPs without relying
+      // on app.set('trust proxy', true);
+      // basically express is ignored the header and looked at the actual connection IP
+      // because it is not configured to trust the proxy
+
+      const ip = req.headers["x-forwarded-for"] || req.ip || "ip-not-found"
       const date = Date.now()
-      let user = users.get(`id-${ip}`)
+      const user = users.get(`id-${ip}`)
 
       if (user) {
         //check if 1 minute has passed since the last buy if not block with too many requests

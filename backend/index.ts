@@ -3,19 +3,19 @@ import express from "express"
 import { errorHandler } from "./middlewares/errorHandler.js"
 import { checkRateLimitMiddleware } from "./middlewares/rateLimit.js"
 import { User } from "./types/index.js"
-const app = express()
+export const app = express()
 
 //just for purpose of this challengue cause this is in memory storage and will be reseted on server restart
 //plus it wont scale well
 //also the corn api should have its own folder and file but for the purpose of this challenge i put it here
 
-const users = new Map<string, User>()
+export const users = new Map<string, User>()
 
 app.use(express.static(config.STATIC_PATH))
 
 app.post("/api/corn", checkRateLimitMiddleware(users), (req, res, next) => {
   try {
-    const ip = req.ip || "ip-not-found"
+    const ip = req.headers["x-forwarded-for"] || req.ip || "ip-not-found"
     const date = Date.now()
     let user = users.get(`id-${ip}`)
 

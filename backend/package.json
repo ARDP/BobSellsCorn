@@ -6,8 +6,11 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js"
+    "build": "pnpm type-check && pnpm lint && tsc",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "dev:test": "vitest",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
@@ -19,7 +22,14 @@
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^25.2.3",
+    "@types/supertest": "^6.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.55.0",
+    "@typescript-eslint/parser": "^8.55.0",
+    "eslint": "^10.0.0",
+    "globals": "^17.3.0",
+    "supertest": "^7.2.2",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
   }
 }
