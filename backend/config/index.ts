@@ -7,20 +7,22 @@ const defaults = {
   RATE_LIMIT: 60000, // 1 min
   PATH_TO_FRONTEND: "frontend",
 }
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const resolvedFrontendPath = path.resolve(__dirname, "..", "..", "frontend")
-// Validate and export
-export const config = {
-  PORT: process.env.PORT || defaults.PORT,
-  RATE_LIMIT: parseInt(process.env.RATE_LIMIT, 10) || defaults.RATE_LIMIT,
-  STATIC_PATH: resolvedFrontendPath,
-}
-
 if (
   !process.env.RATE_LIMIT ||
   !process.env.PORT ||
   !process.env.PATH_TO_FRONTEND
 ) {
   console.warn("An environment variable is missing.")
+}
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+const resolvedFrontendPath = path.resolve(__dirname, "..", "..", "frontend")
+// Validate and export
+export const config = {
+  PORT: process.env.PORT || defaults.PORT,
+  RATE_LIMIT: process.env.RATE_LIMIT
+    ? parseInt(process.env.RATE_LIMIT, 10)
+    : defaults.RATE_LIMIT,
+  STATIC_PATH: resolvedFrontendPath,
 }

@@ -1,12 +1,17 @@
 import { config } from "../config/index.js"
-export const checkRateLimitMiddleware = (users) => {
+import { User } from "../types/index.js"
+import { RequestHandler } from "express"
+export const checkRateLimitMiddleware = (
+  users: Map<string, User>,
+): RequestHandler => {
   // This inner function is the actual Express middleware
   return (req, res, next) => {
     try {
-      const ip = req.ip
+      const ip = req.ip || "ip-not-found"
       const date = Date.now()
-      if (users.has(`id-${ip}`)) {
-        const user = users.get(`id-${ip}`)
+      let user = users.get(`id-${ip}`)
+
+      if (user) {
         //check if 1 minute has passed since the last buy if not block with too many requests
         const howLongHasPassed = date - user.lastPurchasedDate
         if (howLongHasPassed < config.RATE_LIMIT) {
@@ -14,7 +19,6 @@ export const checkRateLimitMiddleware = (users) => {
           return res.status(429).json({ error: "Too many requests" })
         }
       }
-
       next()
     } catch (err) {
       next(err)
