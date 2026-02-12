@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach } from "vitest"
-import { AlertView } from "../views/AlertView.js"
+import { AlertView } from "@/views/AlertView.js"
 import { IAlertView } from "@/interfaces.js"
 
 describe("AlertView", () => {

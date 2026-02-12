@@ -5,7 +5,26 @@ frontend/node_modules/
 # Environment variables
 .env
 backend/.env
+frontend/.env
 
 # IDE / System files
 .DS_Store
 .vscode/
+
+
+# Build outputs
+dist/
+build/
+bin/
+obj/
+
+# Dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+
+docker-compose.override.yml

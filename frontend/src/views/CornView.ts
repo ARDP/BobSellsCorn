@@ -1,7 +1,7 @@
 import Backbone from "backbone"
 import _ from "underscore"
 import { AlertView } from "./AlertView.js"
-import { ICornView } from "@/interfaces"
+import { ICornView } from "@/interfaces.js"
 
 //Views logic if grows too much can be moved to the CornModel.js
 const CORN_TEMPLATE = `

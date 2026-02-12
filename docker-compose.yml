@@ -1,0 +1,20 @@
+services:
+  backend:
+    build: ./backend
+    container_name: bob-backend
+    ports:
+      - "3000:3000"
+    env_file: ./backend/.env
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        - VITE_API_URL=${VITE_API_URL}
+    container_name: bob-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always

@@ -1,6 +1,6 @@
 import Backbone from "backbone"
-import { CornModel } from "./models/CornModel.js"
-import { CornView } from "./views/CornView.js"
+import { CornModel } from "../models/CornModel.js" //TODO: fix this path
+import { CornView } from "@/views/CornView.js"
 
 export const AppRouter = Backbone.Router.extend({
   routes: {

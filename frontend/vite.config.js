@@ -1,19 +1,26 @@
 import { defineConfig } from "vite"
+import path from "path"
 
 export default defineConfig({
-  server: {
-    test: {
-      environment: "jsdom",
-      globals: true,
+  resolve: {
+    alias: {
+      // Maps @ to the src directory for clean imports
+      "@": path.resolve(__dirname, "./src"),
     },
+  },
+  server: {
+    port: 3001,
     proxy: {
-      // Any request starting with /api will be redirected
-      //TODO:change this to a .env variable and logic for working with docker
       "/api": {
         target: "http://localhost:3000",
         changeOrigin: true,
         secure: false,
       },
     },
+  },
+  test: {
+    globals: true,
+    environment: "jsdom",
+    include: ["src/tests/**/*.{test,spec}.ts"],
   },
 })

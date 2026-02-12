@@ -1,8 +1,8 @@
 /** @vitest-environment jsdom */
 import { describe, it, expect, beforeEach, vi } from "vitest"
-import { CornView } from "../views/CornView"
-import { CornModel } from "../models/CornModel"
-import { ICornModel, ICornView } from "../interfaces"
+import { CornView } from "@/views/CornView"
+import { CornModel } from "../../models/CornModel" //TODO: fix this to use @
+import { ICornModel, ICornView } from "@/interfaces"
 
 describe("CornView", () => {
   let model: ICornModel

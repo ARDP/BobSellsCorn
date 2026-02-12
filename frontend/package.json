@@ -8,8 +8,8 @@
     "dev": "vite --port 3001",
     "build": "pnpm type-check && pnpm lint && vite build",
     "preview": "vite preview",
-    "test": "vitest --environment jsdom",
-    "test:run": "vitest run --environment jsdom ",
+    "test": "vitest ",
+    "test:run": "vitest run  ",
     "type-check": "tsc --noEmit",
     "lint": "eslint ."
   },
