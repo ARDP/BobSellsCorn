@@ -1,18 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Bob Sells Corn</title>
-</head>
+    <title>Bob Sells Corn</title>
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvC73w3aoc.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+  </head>
+  <body>
+    <main id="app">
+      <div class="shop-container"></div>
+      <div class="case-study-container">
+        <div class="case-card zombie-case">
+          <span class="case-number">Case 1</span>
+          <h3>Zombie Views</h3>
+          <p>Memory Leak: DOM is cluttered.</p>
+          <button class="buy-btn-zombie">Buy (Zombie Mode)</button>
+        </div>
 
-<body>
-    <header>
-    <h1>Bob Sells Corn</h1>
-    <p>Welcome to Bob's Corn</p>
-    </header>
-    <main id="app"></main>
-</body>
+        <div class="case-card fix-case">
+          <span class="case-number">Case 2</span>
+          <h3>No Zombies?</h3>
+          <p>Clean DOM, but Button Spam is possible.</p>
+          <button class="buy-btn-spam">Buy (Spam Mode)</button>
+        </div>
 
-<script type="module" src="src/app.ts"></script>
+        <div class="case-card ideal-case">
+          <span class="case-number">Case 3</span>
+          <h3>UI Ideal</h3>
+          <p>Clean DOM + Disabled Button State.</p>
+          <button class="buy-btn-ideal">Buy (Ideal Mode)</button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="farm-floor"></footer>
+
+    <script type="module" src="/src/app.ts"></script>
+  </body>
+
+  <script type="module" src="src/app.ts"></script>
 </html>

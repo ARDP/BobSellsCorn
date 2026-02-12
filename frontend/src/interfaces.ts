@@ -2,6 +2,7 @@ import Backbone from "backbone"
 
 export interface IAlertView extends Backbone.View {
   message: string
+  isZombieMode?: boolean
 }
 
 export interface ICornView extends Backbone.View {

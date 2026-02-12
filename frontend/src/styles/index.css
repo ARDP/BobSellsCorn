@@ -1,0 +1,239 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100dvh;
+  background-color: #69b3a5;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 20px;
+  animation: dropIn 0.8s ease-out;
+}
+
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(3rem, 12vw, 6.5rem);
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin: 20px 0;
+  line-height: 1;
+  letter-spacing: -2px;
+  text-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+}
+
+@keyframes dropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.shop-card {
+  border-radius: 16px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.quantity {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.case-study-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.case-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  flex: 1;
+  min-width: 280px;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.case-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.case-card h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.case-card p {
+  flex-grow: 1;
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 15px 0;
+}
+
+.mui-button,
+.case-card button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.mui-button {
+  background-color: #1976d2;
+  color: #fff;
+  width: 100%;
+}
+.mui-button:hover {
+  background-color: #1565c0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.buy-btn-zombie {
+  background: #e53935;
+  color: white;
+}
+.buy-btn-spam {
+  background: #ffb300;
+  color: #000;
+}
+.buy-btn-ideal {
+  background: #43a047;
+  color: white;
+}
+
+button:disabled {
+  background-color: #cccccc !important;
+  color: #666666 !important;
+  cursor: not-allowed;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.alert-container {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 9999;
+  animation: demoSlowFade 8s forwards;
+}
+
+.alert-content {
+  background: #333;
+  color: #fff;
+  padding: 16px 24px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 250px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border-left: 5px solid #ffcc00;
+}
+
+@keyframes demoSlowFade {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  5% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+.farm-floor {
+  width: 100%;
+  height: 45vh;
+  margin-top: auto;
+  background:
+    linear-gradient(to bottom, #69b3a5 0%, rgba(105, 179, 165, 0) 25%),
+    url("@/assets/farm-bg.png");
+  background-size: 100% 100%;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+  .case-study-container {
+    flex-wrap: wrap;
+  }
+  .title {
+    font-size: 3.5rem;
+  }
+  .case-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+#submit-corn {
+  display: none;
+}

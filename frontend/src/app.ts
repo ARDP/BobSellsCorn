@@ -1,3 +1,4 @@
+import "@/styles/index.css"
 import $ from "jquery"
 import Backbone from "backbone"
 import { AppRouter } from "./router.js"

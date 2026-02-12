@@ -28,10 +28,13 @@ describe("CornView", () => {
     const saveSpy = vi
       .spyOn(model, "save")
       .mockImplementation(() => model as unknown as JQueryXHR)
+    //TODO:this is a workaround for the invisible button
+    const mockEvent = {
+      preventDefault: vi.fn(),
+      currentTarget: view.$("#submit-corn")[0],
+    }
 
-    const button = view.$("#submit-corn")
-    button.trigger("click")
-
+    view.handlePurchase(mockEvent as unknown as JQuery.Event)
     expect(saveSpy).toHaveBeenCalledTimes(1)
   })
 })

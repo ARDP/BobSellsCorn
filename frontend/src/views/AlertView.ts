@@ -15,9 +15,21 @@ const renderMethod = function (this: IAlertView) {
   return this
 }
 
-const init = function (this: IAlertView, options: { message?: string }) {
+const init = function (
+  this: IAlertView,
+  options: { message?: string; isZombieMode?: boolean },
+) {
   this.message = options.message || "Alert alert!"
+  this.isZombieMode = options.isZombieMode || false
   this.render()
+}
+
+const onAnimatioEnd = function (this: IAlertView) {
+  if (this.isZombieMode) {
+    console.log("Zombie Mode: View retained in DOM.")
+    return
+  }
+  this.remove()
 }
 
 export const AlertView = Backbone.View.extend({
@@ -25,7 +37,9 @@ export const AlertView = Backbone.View.extend({
   className: "alert-container",
   events: {
     "click .close-alert": "remove",
+    animationend: "onAnimationEnd",
   },
   initialize: init,
   render: renderMethod,
+  onAnimationEnd: onAnimatioEnd,
 })
