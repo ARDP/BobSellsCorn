@@ -4,14 +4,17 @@ services:
     container_name: bob-backend
     ports:
       - "3000:3000"
-    env_file: ./backend/.env
+    # Removed 'env_file' to prevent the "File Not Found" crash
+    environment:
+      - PORT=${PORT:-3000}
     restart: always
 
   frontend:
     build:
       context: ./frontend
       args:
-        - VITE_API_URL=${VITE_API_URL}
+        # The ':-' syntax provides a default if the variable is unset
+        - VITE_API_URL=${VITE_API_URL:-http://localhost:3000}
     container_name: bob-frontend
     ports:
       - "80:80"
